@@ -293,6 +293,22 @@ install-arch: build-arch
 
 	dh_install -s
 
+check: build-arch-stamp
+#   Run unit tests (against the newest Postgres version only, for
+#   now).
+	echo "LD_PRELOAD = '$(CURDIR)/liblwgeom/.libs/liblwgeom-2.1.1.so'" \
+		> $(CURDIR)/postgis-check-env.tmp
+	(set -e; \
+		test -z '$(CHECK)' || \
+		pg_virtualenv -v $(NEWEST_POSTGRES_VERSION) \
+			-c '--environment $(CURDIR)/postgis-check-env.tmp' make check || (\
+		for LOGFILE in /tmp/pgis_reg/test_*_diff; do \
+			echo " ### $$LOGFILE ###"; \
+			cat $$LOGFILE; \
+		done; \
+		echo " ### end of log dumps ###"; \
+		exit 2) \
+	)
 
 # Must not depend on anything. This is to be called by
 # binary-arch/binary-indep

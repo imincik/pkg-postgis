@@ -4,4 +4,4 @@
 # distributions where the default version of Postgres isn't the newest
 # one. '9.0+' circumvents that issue with current pg_buildext.
 #
-9.1
+9.0+
