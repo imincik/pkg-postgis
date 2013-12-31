@@ -1,0 +1,9 @@
+debian-versions
+java-version-fix
+fixmakedoc
+fix-spelling
+link-liblwgeom
+use-debian-maven
+honor-build-flags
+fix-kfreebsd
+fix-manpage
