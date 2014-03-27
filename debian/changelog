@@ -1,3 +1,9 @@
+postgis (2.1.1-1~precise3) precise; urgency=low
+
+  * Rebuilding with updated dependencies.
+
+ -- Ivan Mincik <ivan.mincik@gmail.com>  Thu, 27 Mar 2014 11:04:32 +0100
+
 postgis (2.1.1-1~precise2) precise; urgency=low
 
   * Merging Build-Depends-Indep with Build-Depends to build amd64 at
